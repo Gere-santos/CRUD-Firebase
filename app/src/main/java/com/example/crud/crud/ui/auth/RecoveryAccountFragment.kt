@@ -1,4 +1,4 @@
-package com.example.crud.ui.auth
+package com.example.crud.crud.ui.auth
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,10 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
-import androidx.navigation.fragment.findNavController
-import com.example.crud.R
 import com.example.crud.databinding.FragmentRecoveryAccountBinding
-import com.example.crud.databinding.FragmentRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase

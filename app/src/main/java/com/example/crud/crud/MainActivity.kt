@@ -1,9 +1,8 @@
-package com.example.crud.ui
+package com.example.crud.crud
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.fragment.NavHostFragment
-import com.example.crud.R
 import com.example.crud.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
