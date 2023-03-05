@@ -1,6 +1,7 @@
 package com.example.crud.crud.ui.auth
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.example.crud.R
+import com.example.crud.crud.helper.FirebaseHelper
 import com.example.crud.databinding.FragmentRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -65,6 +67,7 @@ class RegisterFragment : Fragment() {
                 if (task.isSuccessful) {
                     findNavController().navigate(R.id.action_global_homeFragment)
                 } else {
+                    Toast.makeText(requireContext(), FirebaseHelper.validError(task.exception?.message.toString()), Toast.LENGTH_SHORT).show()
                    binding.progressBar.isVisible = false
                 }
             }

@@ -20,7 +20,7 @@
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabs"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@color/color_principal"
@@ -30,13 +30,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:tabIndicatorColor="@color/white"
-                app:tabTextColor="@color/white" />
+                app:tabTextColor="@color/white"
+                tools:ignore="SpeakableTextPresentCheck" />
 
             <ImageButton
                 android:id="@+id/ib_logout"
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:background="@color/color_principal"
+                android:contentDescription="@string/app_name"
                 android:paddingHorizontal="8dp"
                 android:src="@drawable/icon_logout"
                 app:layout_constraintBottom_toBottomOf="@+id/tabs"

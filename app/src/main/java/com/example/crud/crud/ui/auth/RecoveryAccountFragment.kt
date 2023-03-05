@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
+import com.example.crud.crud.helper.FirebaseHelper
 import com.example.crud.databinding.FragmentRecoveryAccountBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -53,6 +54,8 @@ class RecoveryAccountFragment : Fragment() {
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
                     Toast.makeText(requireContext(), "Acabamos de enviar um link para o seu email", Toast.LENGTH_SHORT).show()
+                }else{
+                    Toast.makeText(requireContext(), FirebaseHelper.validError(task.exception?.message.toString()), Toast.LENGTH_SHORT).show()
 
                 }
                 binding.progressBar.isVisible = false
