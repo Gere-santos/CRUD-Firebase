@@ -56,7 +56,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/editText"
+                android:id="@+id/editDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -76,10 +76,9 @@
                 android:text="Status"
                 android:textColor="@color/white"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText" />
+                app:layout_constraintTop_toBottomOf="@+id/editDescription" />
 
             <RadioGroup
-
                 android:id="@+id/radioGroup"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -89,14 +88,17 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView2">
 
                 <RadioButton
+                    android:id="@+id/rbTodo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:buttonTint="@color/white"
+                    android:checked="true"
                     android:text="A fazer"
                     android:textColor="@color/white" />
 
                 <RadioButton
+                    android:id="@+id/rbDoing"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -105,6 +107,7 @@
                     android:textColor="@color/white" />
 
                 <RadioButton
+                    android:id="@+id/rbDone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -115,7 +118,7 @@
             </RadioGroup>
 
             <Button
-                android:id="@+id/btnLogin"
+                android:id="@+id/btnSave"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_button"
@@ -138,7 +141,7 @@
                 android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btnLogin"
+                app:layout_constraintTop_toBottomOf="@+id/btnSave"
                 tools:visibility="visible"
                 android:layout_marginTop="16dp"/>
 
