@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.crud.R
 import com.example.crud.crud.helper.FirebaseHelper
 import com.example.crud.crud.model.Task
@@ -16,6 +17,7 @@ import com.example.crud.databinding.FragmentTodoBinding
 
 
 class FormTaskFragment : Fragment() {
+    private val args: FormTaskFragmentArgs by navArgs()
     private var _binding: FragmentFormTaskBinding? = null
     private val binding get() = _binding!!
     private lateinit var task: Task
@@ -34,6 +36,40 @@ class FormTaskFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initListeners()
+        getArgs()
+    }
+
+    private fun getArgs(){
+        args.task.let {
+            if (it != null){
+                task = it
+                configTask()
+
+            }
+        }
+    }
+
+    private fun configTask(){
+        newTask = false
+        statusTask = task.status
+        binding.textToolBar.text = "Editando Tarefa"
+        binding.editDescription.setText(task.description)
+        setStatus()
+    }
+    private fun setStatus(){
+        binding.radioGroup.check(
+            when(task.status){
+                0 -> {
+                    R.id.rbTodo
+                }
+                1 -> {
+                    R.id.rbDoing
+                }
+                else -> {
+                    R.id.rbDone
+                }
+            }
+        )
     }
 
     private fun initListeners() {
@@ -41,7 +77,7 @@ class FormTaskFragment : Fragment() {
         binding.radioGroup.setOnCheckedChangeListener{_, id ->
         statusTask = when(id){
             R.id.rbTodo -> 0
-            R.id.rbDone -> 1
+            R.id.rbDoing -> 1
             else -> 2
         }
         }

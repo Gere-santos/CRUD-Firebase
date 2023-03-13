@@ -16,7 +16,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@color/color_principal">
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabs"
@@ -36,9 +37,11 @@
             <ImageButton
                 android:id="@+id/ib_logout"
                 android:layout_width="50dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:background="@color/color_principal"
                 android:contentDescription="@string/app_name"
+                android:minHeight="48dp"
                 android:paddingHorizontal="8dp"
                 android:src="@drawable/icon_logout"
                 app:layout_constraintBottom_toBottomOf="@+id/tabs"
