@@ -7,14 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
+import com.example.crud.crud.helper.BaseFragment
 import com.example.crud.crud.helper.FirebaseHelper
+import com.example.crud.crud.helper.initToolbar
 import com.example.crud.databinding.FragmentRecoveryAccountBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 
-class RecoveryAccountFragment : Fragment() {
+class RecoveryAccountFragment : BaseFragment() {
     private var _binding: FragmentRecoveryAccountBinding? = null
     private val binding get() = _binding!!
     private lateinit var auth: FirebaseAuth
@@ -29,6 +31,7 @@ class RecoveryAccountFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initToolbar(binding.toolBar)
         auth = Firebase.auth
         initClicks()
     }
@@ -43,6 +46,7 @@ class RecoveryAccountFragment : Fragment() {
         val email = binding.editEmail.text.toString().trim()
 
         if (email.isNotEmpty()){
+            hideKeyboard()
             binding.progressBar.isVisible = true
             recoveryAccountUser(email)
         }else{

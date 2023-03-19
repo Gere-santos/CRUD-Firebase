@@ -24,7 +24,10 @@
             <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/color_principal">
+                android:background="@color/color_principal"
+                app:navigationIcon="@drawable/ic_back"
+                android:id="@+id/toolBar"
+                >
 
                 <TextView
                     android:layout_width="wrap_content"

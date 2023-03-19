@@ -10,14 +10,16 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.example.crud.R
+import com.example.crud.crud.helper.BaseFragment
 import com.example.crud.crud.helper.FirebaseHelper
+import com.example.crud.crud.helper.initToolbar
 import com.example.crud.databinding.FragmentRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 
-class RegisterFragment : Fragment() {
+class RegisterFragment : BaseFragment() {
     private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
     private lateinit var auth: FirebaseAuth
@@ -33,6 +35,7 @@ class RegisterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initToolbar(binding.toolBar)
         auth = Firebase.auth
         initClicks()
     }
@@ -50,7 +53,8 @@ class RegisterFragment : Fragment() {
 
         if (email.isNotEmpty()){
             if (password.isNotEmpty()){
-                    binding.progressBar.isVisible = true
+                hideKeyboard()
+                binding.progressBar.isVisible = true
                     registerUser(email, password)
             }else{
                 Toast.makeText(requireContext(), "Digite sua senha", Toast.LENGTH_SHORT).show()

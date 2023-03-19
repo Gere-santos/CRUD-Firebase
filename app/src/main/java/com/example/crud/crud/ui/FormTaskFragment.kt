@@ -10,13 +10,15 @@ import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.crud.R
+import com.example.crud.crud.helper.BaseFragment
 import com.example.crud.crud.helper.FirebaseHelper
+import com.example.crud.crud.helper.initToolbar
 import com.example.crud.crud.model.Task
 import com.example.crud.databinding.FragmentFormTaskBinding
 import com.example.crud.databinding.FragmentTodoBinding
 
 
-class FormTaskFragment : Fragment() {
+class FormTaskFragment : BaseFragment() {
     private val args: FormTaskFragmentArgs by navArgs()
     private var _binding: FragmentFormTaskBinding? = null
     private val binding get() = _binding!!
@@ -35,6 +37,7 @@ class FormTaskFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initToolbar(binding.toolBar)
         initListeners()
         getArgs()
     }
@@ -86,6 +89,7 @@ class FormTaskFragment : Fragment() {
     private fun validateTask(){
         val description = binding.editDescription.text.toString().trim()
         if (description.isNotEmpty()){
+            hideKeyboard()
             binding.progressBar.isVisible = true
 
             if (newTask) task = Task()

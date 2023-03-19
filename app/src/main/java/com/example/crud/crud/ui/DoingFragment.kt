@@ -98,6 +98,15 @@ class DoingFragment : Fragment() {
         taskList.remove(task)
         taskAdapter.notifyDataSetChanged()
     }
+
+    private fun taskEmpty(){
+        binding.textInfo.text = if (taskList.isEmpty()){
+            "Nenhuma tarefea cadastrada."
+        }else{
+            ""
+        }
+    }
+
     private fun getTasks(){
         FirebaseHelper
             .getDataBase()
@@ -111,12 +120,11 @@ class DoingFragment : Fragment() {
                             val task = snap.getValue(Task::class.java) as Task
                             if (task.status ==  1) taskList.add(task)
                         }
-                        binding.textInfo.text = ""
+
                         taskList.reverse()
                         initAdapter()
-                    }else{
-                        binding.textInfo.text = "Nenhuma tarefa cadastrada."
                     }
+                    taskEmpty()
                     binding.progressBar.isVisible = false
                 }
 

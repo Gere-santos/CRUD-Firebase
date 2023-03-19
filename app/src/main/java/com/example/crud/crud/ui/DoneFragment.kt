@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.crud.R
 import com.example.crud.crud.HomeFragmentDirections
+import com.example.crud.crud.helper.BaseFragment
 import com.example.crud.crud.helper.FirebaseHelper
 import com.example.crud.crud.model.Task
 import com.example.crud.crud.ui.adapter.TaskAdapter
@@ -21,7 +22,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 
 
-class DoneFragment : Fragment() {
+class DoneFragment : BaseFragment() {
     private var _binding: FragmentDoneBinding? = null
     private val binding get() = _binding!!
     private val taskList = mutableListOf<Task>()
@@ -110,12 +111,11 @@ class DoneFragment : Fragment() {
                             val task = snap.getValue(Task::class.java) as Task
                             if (task.status ==  2) taskList.add(task)
                         }
-                        binding.textInfo.text = ""
+
                         taskList.reverse()
                         initAdapter()
-                    }else{
-                        binding.textInfo.text = "Nenhuma tarefa cadastrada."
                     }
+                    taskEmpty()
                     binding.progressBar.isVisible = false
                 }
 
@@ -123,6 +123,14 @@ class DoneFragment : Fragment() {
                     Toast.makeText(requireContext(), "Erro", Toast.LENGTH_SHORT).show()                }
 
             })
+    }
+
+    private fun taskEmpty(){
+        binding.textInfo.text = if (taskList.isEmpty()){
+            "Nenhuma tarefea cadastrada."
+        }else{
+            ""
+        }
     }
 
     override fun onDestroyView() {
